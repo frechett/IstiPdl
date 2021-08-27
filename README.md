@@ -13,6 +13,8 @@ The EIDSWriterClient program is run with the following command:
 java -cp istipdl.jar com.isti.pdl.eidsutil.EIDSWriterClient --notificationDir=notifications
 ```
 ### EIDSReader
+The EIDSReader reads in PDL notification files and logs a mssage with the file name. After the PDL notification files are procesed they are either deleted if the processed directory ("processedDir") is not specified or moved to the processed directory.
+
 The EIDSReader test program is run with the following command:
 ```
 java -cp istipdl.jar com.isti.pdl.eidsutil.EIDSReader --notificationDir=notifications
@@ -36,6 +38,8 @@ notificationDir = notifications
 
 ### EIDSReaderNotificationReceiver
 The EIDSReaderNotificationReceiver class is meant to be a replacement for the  EIDSNotificationReceiver (gov.usgs.earthquake.distribution.EIDSNotificationReceiver) class. It reads PDL notification message files instead of receiving them from PDL feed.
+
+The EIDSReader reads in PDL notification files and sends them to the receiver in the same way they would have normally been sent from the PDL feed. After the PDL notification files are procesed they are either deleted if the processed directory ("processedDir") is not specified or moved to the processed directory.
 
 Here is an example configuration:
 ```
