@@ -19,12 +19,21 @@ java -cp istipdl.jar com.isti.pdl.eidsutil.EIDSReader --notificationDir=notifica
 ```
 ### EIDSWriterNotificationReceiver
 The EIDSWriterNotificationReceiver class is meant to be a replacement for the  EIDSNotificationReceiver (gov.usgs.earthquake.distribution.EIDSNotificationReceiver) class. It has the same functionality but also writes PDL message notifictions.
-The configuration is the same with the following addition:
+The configuration is the same with minor changes to the "[receiver_pdl]" section of the config.ini file.
+
+The following:
+```
+[receiver_pdl]
+type = gov.usgs.earthquake.distribution.EIDSNotificationReceiver
+```
+
+should be changed to:
 ```
 [receiver_pdl]
 type = com.isti.pdl.distribution.EIDSWriterNotificationReceiver
 notificationDir = notifications
 ```
+
 ### EIDSReaderNotificationReceiver
 The EIDSReaderNotificationReceiver class is meant to be a replacement for the  EIDSNotificationReceiver (gov.usgs.earthquake.distribution.EIDSNotificationReceiver) class. It reads PDL notification message files instead of receiving them from PDL feed.
 
