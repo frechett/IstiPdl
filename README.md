@@ -58,3 +58,8 @@ To build the project, from the project directory run:
 ```
 ant
 ```
+## Running
+To run PDL with the ISTI exensions simply replace "ProductClient.jar" with "istipdl.jar" and ensure that both JAR files are in the same directory. For example:
+```
+java -jar istipdl.jar --receive --configFile=config.ini
+```
