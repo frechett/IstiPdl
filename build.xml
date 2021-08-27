@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_jar" name="Create Jar for Project IstiPdl">
+  <property environment="env"/>
+  <property name="debuglevel" value="source,lines,vars"/>
+  <property name="target" value="1.8"/>
+  <property name="source" value="1.8"/>
+  <property name="jarfile" value="istipdl.jar"/>
+  <path id="classpath">
+    <pathelement location="bin"/>
+    <pathelement location="ProductClient.jar"/>
+  </path>
+  <target name="clean">
+    <delete dir="bin"/>
+    <delete file="${jarfile}"/>
+  </target>
+  <target name="init">
+    <get src="https://usgs.github.io/pdl/ProductClient.jar" dest="." verbose="false" usetimestamp="true"/>
+    <mkdir dir="bin"/>
+    <copy includeemptydirs="false" todir="bin">
+      <fileset dir="src">
+        <exclude name="**/*.java"/>
+      </fileset>
+    </copy>
+  </target>
+  <target depends="init" name="build">
+    <echo message="${ant.project.name}: ${ant.file}"/>
+    <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeantruntime="false">
+      <src path="src"/>
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+  <target depends="build" name="create_jar">
+    <jar destfile="${jarfile}">
+      <manifest>
+        <attribute name="Main-Class" value="com.isti.pdl.distribution.IstiBootstrap"/>
+        <attribute name="Class-Path" value=". ProductClient.jar"/>
+      </manifest>
+      <fileset dir="bin"/>
+    </jar>
+  </target>
+</project>
