@@ -23,4 +23,12 @@
 hs_err_pid*
 /bin/
 /notifications/
-/EIDSWriter_tracking.dat
+
+# macOS Desktop Services Store files
+.DS_Store
+
+# PDL files
+/data/
+*.dat
+config_*.ini
+regions.json
